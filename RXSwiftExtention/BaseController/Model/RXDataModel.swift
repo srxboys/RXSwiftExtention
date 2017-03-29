@@ -6,16 +6,12 @@
 //  Copyright © 2017年 https://github.com/srxboys. All rights reserved.
 //
 /*
- * 数据模型 都在这里
+ * 数据模型 基类
  */
 
 import UIKit
 
-class RXHomeModel: NSObject {
-    let title : String? = nil
-    let name : String? = nil
-    let type = 0
-    let image : String? = nil;
+class RXModel: NSObject {
     
     override func setValue(_ value: Any?, forUndefinedKey key: String) {
         //不存在的

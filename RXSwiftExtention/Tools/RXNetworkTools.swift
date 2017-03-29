@@ -1,5 +1,5 @@
 //
-//  NetworkTools.swift
+//  RXNetworkTools.swift
 //  RXSwiftExtention
 //
 //  Created by srx on 2017/3/25.
@@ -14,8 +14,13 @@ enum MethodType {
     case post
 }
 
-class NetworkTools {
-    class func requestData(_ type : MethodType, URLString : String, parameters : [String : Any]? = nil, finishedCallback :  @escaping (_ result : Any) -> ()) {
+class RXNetworkTools {
+    
+     class func postData(_ URLString : String, parameters : [String : Any]? = nil, finishedCallback :  @escaping (_ result : Any) -> ()) {
+        requestHttpData(.post, URLString: URLString, parameters:parameters, finishedCallback: finishedCallback)
+    }
+
+    fileprivate class func requestHttpData(_ type : MethodType, URLString : String, parameters : [String : Any]? = nil, finishedCallback :  @escaping (_ result : Any) -> ()) {
         
         // 1.获取类型
         let method = type == .get ? HTTPMethod.get : HTTPMethod.post

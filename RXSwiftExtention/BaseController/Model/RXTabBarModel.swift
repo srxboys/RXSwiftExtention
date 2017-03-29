@@ -9,7 +9,7 @@
 
 import UIKit
 
-class RXTabBarModel: NSObject {
+class RXTabBarModel: RXModel {
     
     var image : String = ""
     

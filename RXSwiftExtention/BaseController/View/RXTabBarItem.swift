@@ -10,7 +10,7 @@ import UIKit
 
 // MARK:- 定义协议
 protocol RXTabBarItemDelegate : class {
-    func TabBarItem(_ TabBarItem : RXTabBarItem)
+    func TabBarItemClick(_ TabBarItem : RXTabBarItem)
 }
 
 
@@ -83,11 +83,16 @@ extension RXTabBarItem {
         
         var labelFrame : CGRect = CGRect(x: 0, y: labelY, width: width, height: labelH)
         
+        
+        
+        _nameLabel.textColor = UIColor.darkGray
         if(index == 4) {
             labelFrame = CGRect()
         }
-
-        _nameLabel.textColor = UIColor.darkGray
+        else if(index == 0) {
+           _nameLabel.textColor = UIColor.purple
+        }
+        
         _nameLabel.frame = labelFrame
         _nameLabel.textAlignment = .center
         _nameLabel.font = UIFont(name: "Helvetica", size: 10)
@@ -112,7 +117,7 @@ extension RXTabBarItem {
     }
     
     
-    func getTabBarName(_ index : Int , isNomal : Bool ) -> String {
+    fileprivate func getTabBarName(_ index : Int , isNomal : Bool ) -> String {
         
         if(index > 3) {
             return ""
@@ -126,8 +131,18 @@ extension RXTabBarItem {
         }
     }
     
+    func changeTabBarStatus(_ isSelect : Bool) {
+        _imageView.image = UIImage(named:getTabBarName(index, isNomal: !isSelect))
+        if(isSelect) {
+            _nameLabel.textColor = UIColor.purple
+        }
+        else {
+            _nameLabel.textColor = UIColor.darkGray
+        }
+    }
+    
     @objc fileprivate func viewClick() {
-        delegate?.TabBarItem(self)
+        delegate?.TabBarItemClick(self)
     }
 }
 

@@ -7,7 +7,17 @@
 //
 import UIKit
 
+// MARK:- 定义协议
+protocol RXTabBarViewDelegate : class {
+    func TabBarViewClick(_ TabBarItem : RXTabBarItem)
+}
+
 class RXTabBarView: UIView {
+    
+    weak var delegate : RXTabBarViewDelegate?
+    
+    fileprivate var _tebBarItem : RXTabBarItem?
+    
     fileprivate lazy var _tabBarItem1 : RXTabBarItem = {[weak self] in
         let Item = RXTabBarItem(name: "推荐", index: 0)
         Item.delegate = self
@@ -50,6 +60,7 @@ class RXTabBarView: UIView {
 
 extension RXTabBarView : RXTabBarItemDelegate {
     fileprivate func configUI() {
+        _tebBarItem = _tabBarItem1;
         addSubview(_tabBarItem1)
         addSubview(_tabBarItem2)
         addSubview(_tabBarItem3)
@@ -57,7 +68,18 @@ extension RXTabBarView : RXTabBarItemDelegate {
         addSubview(_tabBarItem5)
     }
     
-    func TabBarItem(_ TabBarItem: RXTabBarItem) {
+    func TabBarItemClick(_ TabBarItem: RXTabBarItem) {
         RXLog("点击了 tabbar是 \(TabBarItem.index)")
+
+        if(_tebBarItem == TabBarItem) {
+            //点击了同一个
+            return
+        }
+        
+        _tebBarItem?.changeTabBarStatus(false)
+        _tebBarItem = TabBarItem
+        _tebBarItem?.changeTabBarStatus(true)
+        
+        delegate?.TabBarViewClick(TabBarItem)
     }
 }

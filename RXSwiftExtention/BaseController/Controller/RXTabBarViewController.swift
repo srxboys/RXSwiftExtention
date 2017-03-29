@@ -12,6 +12,7 @@ class RXTabBarViewController: UITabBarController {
 
     fileprivate lazy var _TabBarView : RXTabBarView = {[unowned self] in
         let tabBarView : RXTabBarView  = RXTabBarView(frame: self.tabBar.bounds)
+        tabBarView.delegate = self
         tabBarView.backgroundColor = UIColor.white
         return tabBarView
     }()
@@ -68,8 +69,6 @@ extension RXTabBarViewController {
         return navVC
     }
     
-    
-    
     fileprivate func setTabBarImage(_ tabbar : UITabBarItem, index : Int) {
         tabbar.image = UIImage(named: getTabBarName(index, isNomal: true))
         tabbar.selectedImage = UIImage(named:getTabBarName(index, isNomal: false))
@@ -84,8 +83,11 @@ extension RXTabBarViewController {
         }
     }
     
-    fileprivate func addVC(vcName : String){
-//        self.addChildViewController(<#T##childController: UIViewController##UIViewController#>)
+}
+
+extension RXTabBarViewController : RXTabBarViewDelegate {
+    func TabBarViewClick(_ TabBarItem: RXTabBarItem) {
+        selectedIndex = TabBarItem.index;
     }
 }
 

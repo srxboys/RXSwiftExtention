@@ -1,5 +1,9 @@
 # RXSwiftExtenstion
 
+[![Platform](https://img.shields.io/badge/platform-iOS-red.svg)](https://developer.apple.com/iphone/index.action)
+[![Language](https://img.shields.io/badge/Language-Swift-yellow.svg)](http://swift-lang.org/main/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://mit-license.org)
+
 - 基于 \>=Xcode8
 
 

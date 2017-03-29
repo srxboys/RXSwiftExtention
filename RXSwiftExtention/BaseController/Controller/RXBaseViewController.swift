@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RXBaseViewController.swift
 //  RXSwiftExtention
 //
 //  Created by srx on 2017/3/25.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class RXBaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+        view.backgroundColor = UIColor.white
+        configBaseViewUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,8 +21,14 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-
-
+    deinit {
+        //OC的 dealloc
+        RXLog("loc")
+    }
 }
 
+extension RXBaseViewController {
+    fileprivate func configBaseViewUI() {
+        view.backgroundColor = UIColor.white
+    }
+}

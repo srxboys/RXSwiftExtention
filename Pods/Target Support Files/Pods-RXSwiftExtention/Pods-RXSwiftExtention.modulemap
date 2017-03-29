@@ -1,0 +1,6 @@
+framework module Pods_RXSwiftExtention {
+  umbrella header "Pods-RXSwiftExtention-umbrella.h"
+
+  export *
+  module * { export * }
+}

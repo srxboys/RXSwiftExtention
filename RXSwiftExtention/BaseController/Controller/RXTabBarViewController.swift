@@ -85,6 +85,7 @@ extension RXTabBarViewController {
     
 }
 
+// MARK: --- 实现tabBarView代理 ---
 extension RXTabBarViewController : RXTabBarViewDelegate {
     func TabBarViewClick(_ TabBarItem: RXTabBarItem) {
         selectedIndex = TabBarItem.index;

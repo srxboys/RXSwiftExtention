@@ -8,18 +8,33 @@
 
 import UIKit
 
+
+
 class RXHomeViewController: RXBaseViewController {
-    //懒加载
-    fileprivate lazy var _tableView = UITableView()
+    
+    fileprivate let ImgScrollHeight = RXActureHeight(120)
     
     //初始化时赋值
-//    lazy var tableView = { () -> UITableView in
-//        let tempTabView = UITableView()
-//        tempTabView.delegate =  self
-//        tempTabView.dataSource = self
-//        tempTabView.backgroundColor = UIColor.red
-//        return tempTabView;
-//    }
+    fileprivate lazy var collectionView : UICollectionView = {[unowned self]  in
+        let flowlayout = UICollectionViewFlowLayout()
+        flowlayout.minimumLineSpacing = 0
+        flowlayout.minimumInteritemSpacing = 0
+        
+        let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowlayout)
+        collectionView.delegate =  self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = self.view.backgroundColor
+        collectionView.register(RXHomeMarketingCell.classForCoder(), forCellWithReuseIdentifier: HomeMarketingCellId)
+        collectionView.contentInset = UIEdgeInsetsMake(self.ImgScrollHeight, 0, 0, 0)
+        return collectionView;
+    }()
+    
+    fileprivate lazy var imageScrollView : RXImageScroller = { [unowned self] in
+        let imageScrollView = RXImageScroller()
+        imageScrollView.frame = CGRect(x: 0, y: -self.ImgScrollHeight, width: RXScreenWidth, height: self.ImgScrollHeight)
+        imageScrollView.backgroundColor = UIColor.gray
+        return imageScrollView
+    }()
     
     override func viewDidLoad() {
       super.viewDidLoad()
@@ -31,47 +46,62 @@ class RXHomeViewController: RXBaseViewController {
 // MARK: --configUI--
 extension RXHomeViewController{
    fileprivate func configUI()  {
-        view.backgroundColor = UIColor.red
-    
-        _tableView.frame = view.bounds
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        view.addSubview(_tableView)
+        collectionView.addSubview(imageScrollView)
+        view.addSubview(collectionView)
     }
 }
 
-// MARK: --请求数据--
-extension RXHomeViewController {
-   fileprivate func reloadData(){
-        
-    }
-}
 
-// MARK: --tableView delegate--
-extension RXHomeViewController : UITableViewDelegate,UITableViewDataSource {
+// MARK: --collectionView dataSource--
+extension RXHomeViewController : UICollectionViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIndifier = "cell"
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellIndifier)
-        if cell == nil {
-            cell = UITableViewCell.init(style: .default, reuseIdentifier: cellIndifier)
-            cell?.selectionStyle = .none
-        }
-        cell?.textLabel?.text = "测试数据 \(indexPath.row)"
-        return cell!
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 40
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        RXLog("您点击了 \(indexPath.row)")
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let section = indexPath.section
+//        if(section == 0) {
+            //横条gif广告
+//        }
+//        else if(section == 1) {
+            //4个图标
+            let cell : RXHomeMarketingCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMarketingCellId, for: indexPath) as! RXHomeMarketingCell
+            cell.setData()
+            return cell
+//        }
+//        else {
+//            
+//        }
     }
+    
 }
 
+// MARK: --collectionView delegate--
+extension RXHomeViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        //        let section = indexPath.section
+        //        if(section == 0) {
+        //横条gif广告
+        //        }
+        //        else if(section == 1) {
+        return CGSize(width: RXScreenWidth/4, height: RXScreenWidth/4-5-8)
+        //       }
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        RXLog("您 选择了 第几个item \(indexPath.row)")
+    }
+
+}
+
+// MARK: --- 处理事件 -----
+extension RXHomeViewController {
+   
+}
 

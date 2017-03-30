@@ -26,20 +26,20 @@ class RXTabBarItem: UIView {
     fileprivate lazy var _lineView : UIView = {
         var lineView = UIView()
         lineView.frame = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: 0.5)
-        lineView.backgroundColor = UIColor(r: 170, g: 170, b: 170)
+        lineView.backgroundColor = UIColor.RGB(r: 170, g: 170, b: 170)
         return lineView
     }()
     
     init(name: String, index : Int) {
         _nameString = name
         self.index = index
-        var w : CGFloat = ScreenWidth/4
+        var w : CGFloat = RXScreenWidth/4
         var x : CGFloat = CGFloat(index) * w
         if(index == 4) {
             x = 0
             w = 0
         }
-        let frame  = CGRect(x: x, y: 0, width: w, height: TabBarHeight)
+        let frame  = CGRect(x: x, y: 0, width: w, height: RXTabBarHeight)
         super.init(frame: frame)
         configUI()
     }

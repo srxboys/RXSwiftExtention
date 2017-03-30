@@ -35,19 +35,21 @@ func RXLog<ANY>(_ log : ANY,filePath:String = #file, line:Int = #line, funcName:
 }
 
 //MARK: - 获取分辨率
-public let NavHeight : CGFloat = 64
-public let TabBarHeight : CGFloat = 49
-public let ScreenWidth = UIScreen.main.bounds.width
-public let ScreenHeight = UIScreen.main.bounds.height
+public let RXNavHeight : CGFloat = 64
+public let RXTabBarHeight : CGFloat = 49
+public let RXScreenWidth = UIScreen.main.bounds.width
+public let RXScreenHeight = UIScreen.main.bounds.height
 
 //MARK: - 宽高比定义  roundf 四舍五入函数
-func ActureHeight(height:CGFloat) -> CGFloat {
-    return height/375 * ScreenWidth
+func RXActureHeight(_ height:CGFloat) -> CGFloat {
+    return height/375 * RXScreenWidth
 }
 
-func ActureHeightV(height:CGFloat) -> CGFloat {
-    return height/667.0 * ScreenHeight
+func RXActureHeightV(_ height:CGFloat) -> CGFloat {
+    return height/667.0 * RXScreenHeight
 }
+
+
 
 
 //这个还是不行

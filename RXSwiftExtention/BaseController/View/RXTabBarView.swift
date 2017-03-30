@@ -42,6 +42,7 @@ class RXTabBarView: UIView {
         return tabBarItem
         }()
     
+    //中间的活动图标
     fileprivate lazy var _tabBarItem5 : RXTabBarItem = {[weak self] in
         let tabBarItem = RXTabBarItem(name: "", index: 4)
         tabBarItem.delegate = self

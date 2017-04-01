@@ -158,6 +158,9 @@ fileprivate class RXPageControl : UIView {
     /// 当前页数
     var currentPage : Int = 0 {
         didSet {
+            if(currentPage > numberOfPages) {
+                currentPage = 0
+            }
             changeSelectedPage()
         }
     }
@@ -165,6 +168,7 @@ fileprivate class RXPageControl : UIView {
     /// 总页数
     var numberOfPages : Int = 0 {
         didSet {
+            guard numberOfPages != 0 else { return }
             removeAll()
             createSubPageControll()
         }

@@ -12,5 +12,7 @@ target 'RXSwiftExtention' do
 pod 'Alamofire', '~> 4.4'
 #图片加载
 pod 'Kingfisher', '~> 3.6.0'
+#扩展
+pod 'SwifterSwift'
 
 end

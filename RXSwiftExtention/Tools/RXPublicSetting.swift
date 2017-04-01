@@ -13,7 +13,7 @@
 import UIKit
 
 //MARK: - 自定义日志格式
-func RXLog<ANY>(_ log : ANY,filePath:String = #file, line:Int = #line, funcName:String = #function)  {
+public func RXLog<ANY>(_ log : ANY,filePath:String = #file, line:Int = #line, funcName:String = #function)  {
     print()
     print(">>>>>>>>>>>")
     //文件所在路径
@@ -41,11 +41,11 @@ public let RXScreenWidth = UIScreen.main.bounds.width
 public let RXScreenHeight = UIScreen.main.bounds.height
 
 //MARK: - 宽高比定义  roundf 四舍五入函数
-func RXActureHeight(_ height:CGFloat) -> CGFloat {
+public func RXActureHeight(_ height:CGFloat) -> CGFloat {
     return height/375 * RXScreenWidth
 }
 
-func RXActureHeightV(_ height:CGFloat) -> CGFloat {
+public func RXActureHeightV(_ height:CGFloat) -> CGFloat {
     return height/667.0 * RXScreenHeight
 }
 

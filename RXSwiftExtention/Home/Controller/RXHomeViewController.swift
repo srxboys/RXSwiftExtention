@@ -48,6 +48,7 @@ extension RXHomeViewController{
    fileprivate func configUI()  {
         collectionView.addSubview(imageScrollView)
         view.addSubview(collectionView)
+    
     }
 }
 
@@ -60,7 +61,7 @@ extension RXHomeViewController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 40
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

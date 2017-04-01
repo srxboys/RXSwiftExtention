@@ -45,7 +45,9 @@ extension RXTabBarDownloadImage {
             }
             
             let dict = dataArray[i] as [String: String]
-            let tabBarModel =  RXTabBarModel(dict: dict)
+            
+            let tabBarModel =  RXTabBarModel()
+            
             //这里我没有写string的key，下面是做个样式
             guard (tabBarModel.noamlImgData?.length)! > 0 || (tabBarModel.selectedImgData?.length)! > 0 else {
                 //并告诉下载者 下载失败

@@ -69,20 +69,6 @@ extension RXTabBarViewController {
         return navVC
     }
     
-    fileprivate func setTabBarImage(_ tabbar : UITabBarItem, index : Int) {
-        tabbar.image = UIImage(named: getTabBarName(index, isNomal: true))
-        tabbar.selectedImage = UIImage(named:getTabBarName(index, isNomal: false))
-    }
-    
-    fileprivate func getTabBarName(_ index : Int , isNomal : Bool ) -> String {
-        if(isNomal) {
-            return "tab_\(index)"
-        }
-        else {
-            return "tab_\(index)_h"
-        }
-    }
-    
 }
 
 // MARK: --- 实现tabBarView代理 ---

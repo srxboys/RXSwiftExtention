@@ -8,8 +8,8 @@
 
 import Foundation
 
-/// 首页**
-public let HOME_TV_PATH = ""
+/// 首页 滚动图
+public let HOME_TV_FOCUS_PATH = "b2c.advertising2.homefocus"
 
 /// 玩家**
 public let PLAYER_TV_PATH = ""

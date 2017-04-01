@@ -33,6 +33,7 @@
 		6CA09F9A1E8C9F3600C3736B /* RXHomeMarketingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA09F991E8C9F3600C3736B /* RXHomeMarketingCell.swift */; };
 		6CA09F9C1E8CBDC300C3736B /* RXImageScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA09F9B1E8CBDC300C3736B /* RXImageScroller.swift */; };
 		6CA09F9E1E8CDBF800C3736B /* RXImageScrollModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA09F9D1E8CDBF800C3736B /* RXImageScrollModel.swift */; };
+		6CFBC3181E8E2D61000308D6 /* RXHomeImageScrollViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CFBC3171E8E2D61000308D6 /* RXHomeImageScrollViewModel.swift */; };
 		6D8A506E9A4EFDEF998AAA69 /* Pods_RXSwiftExtention.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 158AFC8FB07982EB31B93E8C /* Pods_RXSwiftExtention.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +56,6 @@
 		6C2E96F21E8BDA580008967A /* RXTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXTabBarItem.swift; sourceTree = "<group>"; };
 		6C2E96F31E8BDA580008967A /* RXTabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXTabBarView.swift; sourceTree = "<group>"; };
 		6C2E96F81E8BDA580008967A /* RXHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXHomeViewController.swift; sourceTree = "<group>"; };
-		6C2E96FF1E8BDA580008967A /* txt.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = txt.txt; sourceTree = "<group>"; };
 		6C2E97021E8BDA580008967A /* RXProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXProfileViewController.swift; sourceTree = "<group>"; };
 		6C2E97031E8BDA580008967A /* txt.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = txt.txt; sourceTree = "<group>"; };
 		6C2E97051E8BDA580008967A /* txt.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = txt.txt; sourceTree = "<group>"; };
@@ -81,6 +81,7 @@
 		6CA09F991E8C9F3600C3736B /* RXHomeMarketingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXHomeMarketingCell.swift; sourceTree = "<group>"; };
 		6CA09F9B1E8CBDC300C3736B /* RXImageScroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXImageScroller.swift; sourceTree = "<group>"; };
 		6CA09F9D1E8CDBF800C3736B /* RXImageScrollModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXImageScrollModel.swift; sourceTree = "<group>"; };
+		6CFBC3171E8E2D61000308D6 /* RXHomeImageScrollViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXHomeImageScrollViewModel.swift; sourceTree = "<group>"; };
 		7C7CC9C8A64083D62326A277 /* Pods-RXSwiftExtention.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RXSwiftExtention.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RXSwiftExtention/Pods-RXSwiftExtention.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -220,7 +221,7 @@
 		6C2E96FE1E8BDA580008967A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				6C2E96FF1E8BDA580008967A /* txt.txt */,
+				6CFBC3171E8E2D61000308D6 /* RXHomeImageScrollViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -528,6 +529,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CFBC3181E8E2D61000308D6 /* RXHomeImageScrollViewModel.swift in Sources */,
 				6C2E97381E8BDA580008967A /* RXProfileViewController.swift in Sources */,
 				6C2E972E1E8BDA580008967A /* RXDataModel.swift in Sources */,
 				6C1528381E865AB30086D4D5 /* ViewController.swift in Sources */,

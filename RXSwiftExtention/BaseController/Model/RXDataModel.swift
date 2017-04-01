@@ -27,8 +27,8 @@ class RXModel: NSObject {
 
 // MARK: --- String-----
 /// 根据字典key获取内容为 字符串类型
-public func dictForKeyString(dict:[String:Any], key : String) ->String {
-    let valueStatus = dictForKey(dict: dict, key: key)
+public func dictForKeyString(_ dict:[String:Any], key : String) ->String {
+    let valueStatus = dictForKey(dict, key: key)
     
     if(!valueStatus.isValue) {
         return ""
@@ -42,42 +42,32 @@ public func dictForKeyString(dict:[String:Any], key : String) ->String {
             return ""
         }
     }
-    else if(value is [String:Any]) {
-        return ""
-    }
-    else if(value is [Any]) {
-        return ""
-    }
-    else if "\(value)".characters.count <= 0 {
-        return ""
-    }
+    else if(value is [String:Any]) { return "" }
+    else if(value is [Any]) { return "" }
+    else if "\(value)".characters.count <= 0 { return "" }
     
     return "\(value)"
 }
 
 /// 根据字典key获取内容为 数值类型
-public func dictForKeyInt(dict:[String:Any], key : String) ->Int {
-    let value = dictForKeyString(dict: dict, key: key)
-    
-    if(value.characters.count > 0) {
-        return Int(value)!
-    }
-
+public func dictForKeyInt(_ dict:[String:Any], key : String) ->Int {
+    let value = dictForKeyString(dict, key: key)
+    if(value.characters.count > 0) { return Int(value)! }
     return 0
 }
 
 // MARK: --- Bool -----
 /// 根据字典key获取内容为 布尔类型
-public func dictForKeyBool(dict:[String:Any], key : String) ->Bool {
-    let value = dictForKeyInt(dict: dict, key: key)
+public func dictForKeyBool(_ dict:[String:Any], key : String) ->Bool {
+    let value = dictForKeyInt(dict, key: key)
     if(value > 0) { return true }
     return false
 }
 
 // MARK: --- Dictionary -----
 /// 根据字典key获取内容为字典  返回值  [值，是否有值]
-public func dictForKeyDict(dict:[String:Any], key : String) ->(object:[String:Any], isValue:Bool) {
-    let valueStatus = dictForKey(dict: dict, key: key)
+public func dictForKeyDict(_ dict:[String:Any], key : String) ->(object:[String:Any], isValue:Bool) {
+    let valueStatus = dictForKey(dict, key: key)
     if(!valueStatus.isValue) {
         return ([String:Any](), false)
     }
@@ -90,7 +80,7 @@ public func dictForKeyDict(dict:[String:Any], key : String) ->(object:[String:An
 
 // MARK: --- Any -----
 /// 根据字典key获取内容为任意类型  返回值  [值，是否有值]
-func dictForKey(dict:[String:Any], key:String) -> (object:Any, isValue:Bool) {
+func dictForKey(_ dict:[String:Any], key:String) -> (object:Any, isValue:Bool) {
     guard dict.index(forKey: key) != nil else {
         return ("", false)
     }

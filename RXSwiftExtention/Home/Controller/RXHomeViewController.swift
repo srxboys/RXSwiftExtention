@@ -13,6 +13,7 @@ import UIKit
 class RXHomeViewController: RXBaseViewController {
     
     fileprivate let ImgScrollHeight = RXActureHeight(120)
+    fileprivate lazy var imageScrollVM = RXHomeImageScrollViewModel()
     
     //初始化时赋值
     fileprivate lazy var collectionView : UICollectionView = {[unowned self]  in
@@ -48,6 +49,8 @@ extension RXHomeViewController{
    fileprivate func configUI()  {
         collectionView.addSubview(imageScrollView)
         view.addSubview(collectionView)
+    
+        reloadData()
     
     }
 }
@@ -99,6 +102,14 @@ extension RXHomeViewController : UICollectionViewDelegateFlowLayout {
         RXLog("您 选择了 第几个item \(indexPath.row)")
     }
 
+}
+
+extension RXHomeViewController {
+   fileprivate func reloadData() {
+        imageScrollVM.ImageScrollReques {
+            
+        }
+    }
 }
 
 // MARK: --- 处理事件 -----

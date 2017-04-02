@@ -33,6 +33,7 @@
 		6CA09F9A1E8C9F3600C3736B /* RXHomeMarketingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA09F991E8C9F3600C3736B /* RXHomeMarketingCell.swift */; };
 		6CA09F9C1E8CBDC300C3736B /* RXImageScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA09F9B1E8CBDC300C3736B /* RXImageScroller.swift */; };
 		6CA09F9E1E8CDBF800C3736B /* RXImageScrollModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA09F9D1E8CDBF800C3736B /* RXImageScrollModel.swift */; };
+		6CE6CC411E90A1620001EB74 /* RXPushTypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE6CC401E90A1620001EB74 /* RXPushTypeController.swift */; };
 		6CFBC3181E8E2D61000308D6 /* RXHomeImageScrollViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CFBC3171E8E2D61000308D6 /* RXHomeImageScrollViewModel.swift */; };
 		6D8A506E9A4EFDEF998AAA69 /* Pods_RXSwiftExtention.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 158AFC8FB07982EB31B93E8C /* Pods_RXSwiftExtention.framework */; };
 /* End PBXBuildFile section */
@@ -81,6 +82,7 @@
 		6CA09F991E8C9F3600C3736B /* RXHomeMarketingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXHomeMarketingCell.swift; sourceTree = "<group>"; };
 		6CA09F9B1E8CBDC300C3736B /* RXImageScroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXImageScroller.swift; sourceTree = "<group>"; };
 		6CA09F9D1E8CDBF800C3736B /* RXImageScrollModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXImageScrollModel.swift; sourceTree = "<group>"; };
+		6CE6CC401E90A1620001EB74 /* RXPushTypeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXPushTypeController.swift; sourceTree = "<group>"; };
 		6CFBC3171E8E2D61000308D6 /* RXHomeImageScrollViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXHomeImageScrollViewModel.swift; sourceTree = "<group>"; };
 		7C7CC9C8A64083D62326A277 /* Pods-RXSwiftExtention.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RXSwiftExtention.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RXSwiftExtention/Pods-RXSwiftExtention.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				6C1C4C031E8BE964009CB2CB /* RXTabBarDownloadImage.swift */,
+				6CE6CC401E90A1620001EB74 /* RXPushTypeController.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				6CA09F9E1E8CDBF800C3736B /* RXImageScrollModel.swift in Sources */,
 				6C2E97481E8BDA580008967A /* NSDate-Extension.swift in Sources */,
 				6C1528361E865AB30086D4D5 /* AppDelegate.swift in Sources */,
+				6CE6CC411E90A1620001EB74 /* RXPushTypeController.swift in Sources */,
 				6C2E97421E8BDA580008967A /* RXStrollViewController.swift in Sources */,
 				6C2E97311E8BDA580008967A /* RXTabBarView.swift in Sources */,
 			);

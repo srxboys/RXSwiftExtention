@@ -16,8 +16,51 @@ enum MethodType {
 
 class RXNetworkTools {
     
-     class func postData(_ URLString : String, parameters : [String : Any]? = nil, finishedCallback :  @escaping (_ result : Any) -> ()) {
-        requestHttpData(.post, URLString: URLString, parameters:parameters, finishedCallback: finishedCallback)
+    class func postData(parameters : [String : Any]? = nil, finishedCallback :  @escaping (_ result : Any, _ status:Bool, _ message:String) -> ()) {
+        requestHttpData(.post, URLString: SERVER, parameters: parameters) { (result : Any) in
+            
+            guard result != nil else {
+                finishedCallback("", false, "服务器错误")
+                return
+            }
+            
+            // 1.将result转成字典类型
+            guard let resultDict = result as? [String : NSObject] else {
+                finishedCallback("", false, "服务器错误")
+                return
+            }
+            
+            // 2.1根据data该key,获取服务器信息
+            let dataDictModel = dictForKeyDict(resultDict, key: "data")
+            
+            var dataDict = [String:Any]()
+            if(dataDictModel.isValue) {
+                dataDict = dataDictModel.object
+            }
+            else {
+                finishedCallback("", false, dictForKeyString(resultDict, key: "data"))
+                return
+            }
+            //3.1根据data该key,获取服务器是否使用 https
+            let returnIsHttps = dictForKeyBool(dataDict, key: "is_https")
+            RXLog("服务器的请求接口头采用是否采用https= \(returnIsHttps)")
+            
+            //3.2根据message,获取 接口信息
+            let returnMessage = dictForKeyString(dataDict, key: "message")
+            
+            //3.3根据status,获取 接口信息的状态
+            let returnStatus = dictForKeyBool(dataDict, key: "status")
+            
+            //3.4
+            let returnDataModel = dictForKey(dataDict, key: "returndata")
+            if(returnDataModel.isValue){
+                finishedCallback(returnDataModel.object, returnStatus, "")
+            }
+            else {
+                finishedCallback("", returnStatus, returnMessage)
+            }
+
+        }
     }
 
     fileprivate class func requestHttpData(_ type : MethodType, URLString : String, parameters : [String : Any]? = nil, finishedCallback :  @escaping (_ result : Any) -> ()) {

@@ -52,7 +52,9 @@ public func dictForKeyString(_ dict:[String:Any], key : String) ->String {
 /// 根据字典key获取内容为 数值类型
 public func dictForKeyInt(_ dict:[String:Any], key : String) ->Int {
     let value = dictForKeyString(dict, key: key)
-    if(value.characters.count > 0) { return Int(value)! }
+    if(!value.isEmpty) {
+        return Int(value)!
+    }
     return 0
 }
 
@@ -99,5 +101,5 @@ func dictForKey(_ dict:[String:Any], key:String) -> (object:Any, isValue:Bool) {
         return (anyValue as! String, true)
     }
     
-    return (anyValue as Any, true)
+    return (anyValue!, true)
 }

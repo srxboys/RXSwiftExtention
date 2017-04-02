@@ -62,17 +62,14 @@
 		6C2E96F31E8BDA580008967A /* RXTabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXTabBarView.swift; sourceTree = "<group>"; };
 		6C2E96F81E8BDA580008967A /* RXHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXHomeViewController.swift; sourceTree = "<group>"; };
 		6C2E97021E8BDA580008967A /* RXProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXProfileViewController.swift; sourceTree = "<group>"; };
-		6C2E97031E8BDA580008967A /* txt.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = txt.txt; sourceTree = "<group>"; };
 		6C2E97051E8BDA580008967A /* txt.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = txt.txt; sourceTree = "<group>"; };
 		6C2E97071E8BDA580008967A /* txt.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = txt.txt; sourceTree = "<group>"; };
 		6C2E97091E8BDA580008967A /* txt.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = txt.txt; sourceTree = "<group>"; };
 		6C2E970C1E8BDA580008967A /* RXShopCartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXShopCartViewController.swift; sourceTree = "<group>"; };
-		6C2E970D1E8BDA580008967A /* txt.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = txt.txt; sourceTree = "<group>"; };
 		6C2E970F1E8BDA580008967A /* txt.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = txt.txt; sourceTree = "<group>"; };
 		6C2E97111E8BDA580008967A /* txt.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = txt.txt; sourceTree = "<group>"; };
 		6C2E97131E8BDA580008967A /* txt.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = txt.txt; sourceTree = "<group>"; };
 		6C2E97161E8BDA580008967A /* RXStrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXStrollViewController.swift; sourceTree = "<group>"; };
-		6C2E97171E8BDA580008967A /* txt.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = txt.txt; sourceTree = "<group>"; };
 		6C2E97191E8BDA580008967A /* txt.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = txt.txt; sourceTree = "<group>"; };
 		6C2E971B1E8BDA580008967A /* txt.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = txt.txt; sourceTree = "<group>"; };
 		6C2E971D1E8BDA580008967A /* txt.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = txt.txt; sourceTree = "<group>"; };
@@ -255,7 +252,6 @@
 			isa = PBXGroup;
 			children = (
 				6C2E97021E8BDA580008967A /* RXProfileViewController.swift */,
-				6C2E97031E8BDA580008967A /* txt.txt */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -299,7 +295,6 @@
 			isa = PBXGroup;
 			children = (
 				6C2E970C1E8BDA580008967A /* RXShopCartViewController.swift */,
-				6C2E970D1E8BDA580008967A /* txt.txt */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -343,7 +338,6 @@
 			isa = PBXGroup;
 			children = (
 				6C2E97161E8BDA580008967A /* RXStrollViewController.swift */,
-				6C2E97171E8BDA580008967A /* txt.txt */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

@@ -55,6 +55,7 @@ class RXImageScroller: UIView {
         collectionView.dataSource = self;
         collectionView.backgroundColor = UIColor.white
         collectionView.isPagingEnabled = true
+        collectionView.scrollsToTop = false
         collectionView.register(ImageScrollerCell.classForCoder(), forCellWithReuseIdentifier: IMGSIdentifer)
         return collectionView
     }()

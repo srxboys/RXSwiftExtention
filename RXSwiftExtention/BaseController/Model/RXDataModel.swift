@@ -66,6 +66,15 @@ public func dictForKeyBool(_ dict:[String:Any], key : String) ->Bool {
     return false
 }
 
+public func dictForKeyFloat(_ dict:[String:Any], key : String) ->CGFloat {
+    let value = dictForKeyString(dict, key: key)
+    if(!value.isEmpty) {
+    return CGFloat(Float(value)!)
+    }
+    return 0
+}
+
+
 // MARK: --- Dictionary -----
 /// 根据字典key获取内容为字典  返回值  [值，是否有值]
 public func dictForKeyDict(_ dict:[String:Any], key : String) ->(object:[String:Any], isValue:Bool) {

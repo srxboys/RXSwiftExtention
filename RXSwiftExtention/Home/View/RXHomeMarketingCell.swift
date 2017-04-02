@@ -45,7 +45,7 @@ class RXHomeMarketingCell: UICollectionViewCell {
 
 extension RXHomeMarketingCell {
     func setData () {
-        iconImg.backgroundColor = UIColor.gray
+//        iconImg.backgroundColor = UIColor.gray
         nameLabel.text = "srxboys"
     }
 }

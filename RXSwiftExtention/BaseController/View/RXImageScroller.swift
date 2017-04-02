@@ -8,6 +8,7 @@
 //轮播图  --因为现在还没有要设计网络，就没有数据模型和数据
 
 import UIKit
+import Kingfisher
 
 let IMGSIdentifer = "IMGS_cell"
 
@@ -27,7 +28,7 @@ class RXImageScroller: UIView {
             let indexPath = IndexPath(item: (cycleModels?.count ?? 0) * 10, section: 0)
             collectionView.scrollToItem(at: indexPath, at: .left, animated: false)
             
-            // 4.添加定时器
+//            // 4.添加定时器
             removeCycleTimer()
             addCycleTimer()
         }
@@ -35,6 +36,10 @@ class RXImageScroller: UIView {
     //分页
     fileprivate lazy var pageControl : RXPageControl = { [unowned self] in
         let pageControl = RXPageControl()
+        let height = self.bounds.size.height
+        let width = self.bounds.size.width
+        pageControl.frame = CGRect(x: 0, y:height-20 , width: width, height: 10)
+        pageControl.isUserInteractionEnabled = false
         return pageControl
     }()
     
@@ -48,24 +53,34 @@ class RXImageScroller: UIView {
         let collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: flowlayout)
         collectionView.delegate = self
         collectionView.dataSource = self;
-        collectionView.backgroundColor = self.backgroundColor
+        collectionView.backgroundColor = UIColor.white
+        collectionView.isPagingEnabled = true
+        collectionView.register(ImageScrollerCell.classForCoder(), forCellWithReuseIdentifier: IMGSIdentifer)
         return collectionView
     }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(collectionView)
+        addSubview(pageControl)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 // MARK:- 遵守UICollectionView的数据源协议
 extension RXImageScroller: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return (cycleModels?.count ?? 0)*1000
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IMGSIdentifer, for: indexPath) as! ImageScrollerCell
+        cell.scrollModel = cycleModels![(indexPath as NSIndexPath).item % cycleModels!.count]
         return cell
     }
-    
-    
-    
     
 }
 
@@ -79,7 +94,7 @@ extension RXImageScroller: UICollectionViewDelegateFlowLayout {
         // 2.计算pageControl的currentIndex
         pageControl.currentPage = Int(offsetX / scrollView.bounds.width) % (cycleModels?.count ?? 1)
     }
-    
+//
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         removeCycleTimer()
     }
@@ -131,6 +146,14 @@ fileprivate class ImageScrollerCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(imgView)
+    }
+    
+    // MARK: 定义模型属性
+    var scrollModel : RXImageScrollModel? {
+        didSet {
+            let iconURL = URL(string: scrollModel?.image ?? "")!
+            imgView.kf.setImage(with: iconURL, placeholder: UIImage(named: "Img_default"))
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

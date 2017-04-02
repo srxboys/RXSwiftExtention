@@ -31,8 +31,7 @@ class RXHomeViewController: RXBaseViewController {
     }()
     
     fileprivate lazy var imageScrollView : RXImageScroller = { [unowned self] in
-        let imageScrollView = RXImageScroller()
-        imageScrollView.frame = CGRect(x: 0, y: -self.ImgScrollHeight, width: RXScreenWidth, height: self.ImgScrollHeight)
+        let imageScrollView = RXImageScroller(frame:CGRect(x: 0, y: -self.ImgScrollHeight, width: RXScreenWidth, height: self.ImgScrollHeight))
         imageScrollView.backgroundColor = UIColor.gray
         return imageScrollView
     }()
@@ -107,7 +106,7 @@ extension RXHomeViewController : UICollectionViewDelegateFlowLayout {
 extension RXHomeViewController {
    fileprivate func reloadData() {
         imageScrollVM.ImageScrollReques {
-            
+            self.imageScrollView.cycleModels = self.imageScrollVM.imageSAM
         }
     }
 }

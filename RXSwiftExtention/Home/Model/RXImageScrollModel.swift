@@ -23,4 +23,21 @@ class RXImageScrollModel: RXModel {
         //计算属性
         return RXScreenWidth/2*image_height/image_width;
     }
+    
+    override init() {
+        super.init()
+    }
+    
+    convenience init(dict:[String:Any]) {
+        self.init()
+        //接口字段为什么要一个一个的取，因为类型总是换，特别是后台跟换人
+        title = dictForKeyString(dict, key: "title")
+        type = dictForKeyInt(dict, key: "type")
+        image = dictForKeyString(dict, key: "image")
+        link = dictForKeyString(dict, key: "link")
+        wap_image = dictForKeyString(dict, key: "wap_image")
+        is_login = dictForKeyBool(dict, key: "is_login")
+        image_width = dictForKeyFloat(dict, key: "image_width")
+        image_height = dictForKeyFloat(dict, key: "image_height")
+    }
 }

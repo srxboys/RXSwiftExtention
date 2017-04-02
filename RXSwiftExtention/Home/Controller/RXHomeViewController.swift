@@ -172,6 +172,7 @@ extension RXHomeViewController {
         homeLoadRequestVM.homeRequetBuyerPlayer { 
             //买手、玩家、秒杀
         }
+
     }
 }
 

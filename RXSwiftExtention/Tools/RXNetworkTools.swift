@@ -17,6 +17,11 @@ enum MethodType {
 class RXNetworkTools {
     
     class func postData(parameters : [String : Any]? = nil, finishedCallback :  @escaping (_ result : Any, _ status:Bool, _ message:String) -> ()) {
+        guard (parameters?.keys.count)! > 0 else {
+            assert(false, "参数有误")
+            return;
+        }
+        printHttp(parameters!)
         requestHttpData(.post, URLString: SERVER, parameters: parameters) { (result : Any) in
             
             guard result != nil else {
@@ -41,6 +46,11 @@ class RXNetworkTools {
                 finishedCallback("", false, dictForKeyString(resultDict, key: "data"))
                 return
             }
+            
+            //一般直接打印就好，我是为了学习
+//            RXPrintJSON(printObject: dataDict)
+            
+            
             //3.1根据data该key,获取服务器是否使用 https
             let returnIsHttps = dictForKeyBool(dataDict, key: "is_https")
             RXLog("服务器的请求接口头采用是否采用https= \(returnIsHttps)")
@@ -64,7 +74,6 @@ class RXNetworkTools {
     }
 
     fileprivate class func requestHttpData(_ type : MethodType, URLString : String, parameters : [String : Any]? = nil, finishedCallback :  @escaping (_ result : Any) -> ()) {
-        
         // 1.获取类型
         let method = type == .get ? HTTPMethod.get : HTTPMethod.post
         
@@ -82,3 +91,7 @@ class RXNetworkTools {
         }
     }
 }
+
+
+
+

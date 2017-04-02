@@ -14,24 +14,47 @@ import UIKit
 
 //MARK: - 自定义日志格式
 public func RXLog<ANY>(_ log : ANY,filePath:String = #file, line:Int = #line, funcName:String = #function)  {
+    SrxboysLog(log, isError: false,filePath:filePath,line:line, funcName:funcName)
+}
+
+public func RXErrorLog<ANY>(_ log : ANY,filePath:String = #file, line:Int = #line, funcName:String = #function)  {
+    SrxboysLog(log, isError: true, filePath:filePath, line:line, funcName:funcName)
+}
+
+private func SrxboysLog<ANY>(_ log : ANY, isError:Bool, filePath:String = #file, line:Int = #line, funcName:String = #function)  {
+    
+#if DEBUG
+    
     print()
-    print(">>>>>>>>>>>")
+    if(isError) {
+        print("❌❌❌❌❌❌❌")
+    }
+    else {
+        print("👇👇👇👇👇👇👇")
+    }
     //文件所在路径
     guard let file = filePath.components(separatedBy: "/").last else {
         print("文件不存在")
         return;
     }
-    print("   FILE -> " + file)
+    print("   ⓕⓘⓛⓔ ⏩ " + file)
     
     //行数
-    print("   LINE -> \(line)")
+    print("   ⓛⓘⓝⓔ ⏩ \(line)")
     
     //方法
-    print("   FUNCTION - >" + funcName)
-    
+    print("   ⓕⓤⓝⓒⓣⓘⓞⓝ ⏩ " + funcName)
+    print()
     print(log);
-    
-    print("<<<<<<")
+    print()
+    if(isError) {
+        print("🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺")
+    }
+    else {
+        print("👉👉👉👉👉👉👉👉👉👉👉👉👉👉")
+    }
+    print()
+#endif
 }
 
 //MARK: - 获取分辨率

@@ -30,6 +30,7 @@ class RXImageScroller: UIView {
             
 //            // 4.添加定时器
             removeCycleTimer()
+            if(pageControl.numberOfPages == 0) { return }
             addCycleTimer()
         }
     }
@@ -182,7 +183,10 @@ fileprivate class RXPageControl : UIView {
     /// 当前页数
     var currentPage : Int = 0 {
         didSet {
-            if(currentPage > numberOfPages) {
+            
+            if(numberOfPages == 0) { return }
+            
+            if(currentPage >= numberOfPages) {
                 currentPage = 0
             }
             changeSelectedPage()
@@ -192,8 +196,8 @@ fileprivate class RXPageControl : UIView {
     /// 总页数
     var numberOfPages : Int = 0 {
         didSet {
-            guard numberOfPages != 0 else { return }
             removeAll()
+            guard numberOfPages != 0 else { return }
             createSubPageControll()
         }
     }
@@ -222,7 +226,7 @@ fileprivate class RXPageControl : UIView {
             //解包
             dotView.layer.cornerRadius = dotDiameterOff/2.0
             dotView.backgroundColor = offColor
-            dotView.tag = i+1
+            dotView.tag = i
             addSubview(dotView)
             if(i == 0) {
                 //只赋一次值

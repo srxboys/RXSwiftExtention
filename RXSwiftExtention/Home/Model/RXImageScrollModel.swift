@@ -37,7 +37,7 @@ class RXImageScrollModel: RXModel {
         link = dictForKeyString(dict, key: "link")
         wap_image = dictForKeyString(dict, key: "wap_image")
         is_login = dictForKeyBool(dict, key: "is_login")
-        image_width = dictForKeyFloat(dict, key: "image_width")
-        image_height = dictForKeyFloat(dict, key: "image_height")
+        image_width = dictForKeyCGFloat(dict, key: "image_width")
+        image_height = dictForKeyCGFloat(dict, key: "image_height")
     }
 }

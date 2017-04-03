@@ -37,13 +37,13 @@ private func SrxboysLog<ANY>(_ log : ANY, isError:Bool, filePath:String = #file,
         print("文件不存在")
         return;
     }
-    print("   ⓕⓘⓛⓔ ⏩ " + file)
+    print("   Ⓕⓘⓛⓔ ⏩ " + file)
     
     //行数
-    print("   ⓛⓘⓝⓔ ⏩ \(line)")
+    print("   Ⓛⓘⓝⓔ ⏩ \(line)")
     
     //方法
-    print("   ⓕⓤⓝⓒⓣⓘⓞⓝ ⏩ " + funcName)
+    print("   Ⓕⓤⓝⓒⓣⓘⓞⓝ ⏩ " + funcName)
     print()
     print(log);
     print()

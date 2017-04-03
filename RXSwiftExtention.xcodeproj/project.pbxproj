@@ -30,6 +30,9 @@
 		6C2E974B1E8BDA580008967A /* RXConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2E97251E8BDA580008967A /* RXConstant.swift */; };
 		6C2E974C1E8BDA580008967A /* RXPublicSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2E97261E8BDA580008967A /* RXPublicSetting.swift */; };
 		6C2E974D1E8BDA580008967A /* RXNetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2E97271E8BDA580008967A /* RXNetworkTools.swift */; };
+		6C8400041E9221190055C5DA /* RXSkillModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8400031E9221190055C5DA /* RXSkillModel.swift */; };
+		6C8400061E9240A90055C5DA /* RXIndexTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8400051E9240A90055C5DA /* RXIndexTV.swift */; };
+		6C8400081E924E960055C5DA /* RXHomeIndexTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8400071E924E960055C5DA /* RXHomeIndexTVCell.swift */; };
 		6CA09F9A1E8C9F3600C3736B /* RXHomeMarketingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA09F991E8C9F3600C3736B /* RXHomeMarketingCell.swift */; };
 		6CA09F9C1E8CBDC300C3736B /* RXImageScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA09F9B1E8CBDC300C3736B /* RXImageScroller.swift */; };
 		6CA09F9E1E8CDBF800C3736B /* RXImageScrollModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA09F9D1E8CDBF800C3736B /* RXImageScrollModel.swift */; };
@@ -80,6 +83,9 @@
 		6C2E97251E8BDA580008967A /* RXConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXConstant.swift; sourceTree = "<group>"; };
 		6C2E97261E8BDA580008967A /* RXPublicSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXPublicSetting.swift; sourceTree = "<group>"; };
 		6C2E97271E8BDA580008967A /* RXNetworkTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXNetworkTools.swift; sourceTree = "<group>"; };
+		6C8400031E9221190055C5DA /* RXSkillModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXSkillModel.swift; sourceTree = "<group>"; };
+		6C8400051E9240A90055C5DA /* RXIndexTV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXIndexTV.swift; sourceTree = "<group>"; };
+		6C8400071E924E960055C5DA /* RXHomeIndexTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXHomeIndexTVCell.swift; sourceTree = "<group>"; };
 		6CA09F991E8C9F3600C3736B /* RXHomeMarketingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXHomeMarketingCell.swift; sourceTree = "<group>"; };
 		6CA09F9B1E8CBDC300C3736B /* RXImageScroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXImageScroller.swift; sourceTree = "<group>"; };
 		6CA09F9D1E8CDBF800C3736B /* RXImageScrollModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXImageScrollModel.swift; sourceTree = "<group>"; };
@@ -215,6 +221,8 @@
 			children = (
 				6CA09F9D1E8CDBF800C3736B /* RXImageScrollModel.swift */,
 				6CE6CC441E9100300001EB74 /* RXHomeIconModel.swift */,
+				6C8400031E9221190055C5DA /* RXSkillModel.swift */,
+				6C8400051E9240A90055C5DA /* RXIndexTV.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -225,6 +233,7 @@
 				6CE6CC461E9112A50001EB74 /* RXHomeGifAdCell.swift */,
 				6CA09F991E8C9F3600C3736B /* RXHomeMarketingCell.swift */,
 				6CE6CC421E90FBA20001EB74 /* RXHomeBuyerPlayerCell.swift */,
+				6C8400071E924E960055C5DA /* RXHomeIndexTVCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -545,7 +554,9 @@
 				6C1528381E865AB30086D4D5 /* ViewController.swift in Sources */,
 				6CE6CC431E90FBA20001EB74 /* RXHomeBuyerPlayerCell.swift in Sources */,
 				6CA09F9C1E8CBDC300C3736B /* RXImageScroller.swift in Sources */,
+				6C8400081E924E960055C5DA /* RXHomeIndexTVCell.swift in Sources */,
 				6C2E972B1E8BDA580008967A /* RXBaseNavViewController.swift in Sources */,
+				6C8400061E9240A90055C5DA /* RXIndexTV.swift in Sources */,
 				6C2E974B1E8BDA580008967A /* RXConstant.swift in Sources */,
 				6C2E974D1E8BDA580008967A /* RXNetworkTools.swift in Sources */,
 				6CA09F9A1E8C9F3600C3736B /* RXHomeMarketingCell.swift in Sources */,
@@ -557,6 +568,7 @@
 				6C2E972D1E8BDA580008967A /* RXTabBarViewController.swift in Sources */,
 				6C2E973D1E8BDA580008967A /* RXShopCartViewController.swift in Sources */,
 				6C2E974A1E8BDA580008967A /* UIColor-Extension.swift in Sources */,
+				6C8400041E9221190055C5DA /* RXSkillModel.swift in Sources */,
 				6C2E97331E8BDA580008967A /* RXHomeViewController.swift in Sources */,
 				6C2E972F1E8BDA580008967A /* RXTabBarModel.swift in Sources */,
 				6C1C4C041E8BE964009CB2CB /* RXTabBarDownloadImage.swift in Sources */,

@@ -19,7 +19,15 @@ public let PARAMSCOMMON = ["hardware":"iPhone8,1",
 public let SERVER = "http://app.ghs.net/api"
 
 /// 首页 滚动图
-public let HOME_TV_FOCUS_PATH = "b2c.advertising2.homefocus"
+public let HOME_FOCUS_PATH = "b2c.advertising2.homefocus"
+/// 首页4个icon
+public let HOME_FOUR_ICON_PATH = "b2c.advertising2.get_fourad"
+/// 首页秒杀、买手、玩家
+public let HOME_SKILLBP_PATH = "b2c.advertising2.buyrecomment"
+/// 首页秒杀
+public let HOME_SKILL_PATH = "b2c.advertising2.seckill"
+/// 首页tv抢购
+public let HOME_INDEXTV_PATH = "b2c.advertising2.new_indextv"
 
 /// 玩家**
 public let PLAYER_TV_PATH = ""

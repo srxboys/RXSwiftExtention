@@ -66,10 +66,18 @@ public func dictForKeyBool(_ dict:[String:Any], key : String) ->Bool {
     return false
 }
 
-public func dictForKeyFloat(_ dict:[String:Any], key : String) ->CGFloat {
+public func dictForKeyCGFloat(_ dict:[String:Any], key : String) ->CGFloat {
     let value = dictForKeyString(dict, key: key)
     if(!value.isEmpty) {
     return CGFloat(Float(value)!)
+    }
+    return 0
+}
+
+public func dictForKeyFloat(_ dict:[String:Any], key : String) ->Float {
+    let value = dictForKeyString(dict, key: key)
+    if(!value.isEmpty) {
+        return Float(value)!
     }
     return 0
 }

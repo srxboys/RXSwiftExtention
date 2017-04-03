@@ -10,8 +10,8 @@ import UIKit
 
 class RXTabBarViewController: UITabBarController {
 
-    fileprivate lazy var _TabBarView : RXTabBarView = {[unowned self] in
-        let tabBarView : RXTabBarView  = RXTabBarView(frame: self.tabBar.bounds)
+    fileprivate lazy var _TabBarView : RXTabBarView = {[weak self] in
+        let tabBarView : RXTabBarView  = RXTabBarView(frame: self?.tabBar.bounds ?? CGRect())
         tabBarView.delegate = self
         tabBarView.backgroundColor = UIColor.white
         return tabBarView

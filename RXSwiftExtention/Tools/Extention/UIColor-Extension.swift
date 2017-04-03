@@ -14,12 +14,12 @@ extension UIColor {
     }
     
     /// 随机颜色
-    public class func randomColor() -> UIColor {
+    public class func colorRandom() -> UIColor {
         return UIColor.RGB(r: CGFloat(arc4random_uniform(256)), g: CGFloat(arc4random_uniform(256)), b: CGFloat(arc4random_uniform(256)))
     }
     
     /// 十六进制颜色
-    public class func hexStringToColor(_ hexString: String) -> UIColor{
+    public class func colorHex(_ hexString: String) -> UIColor{
         
         var cString: String = hexString.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         

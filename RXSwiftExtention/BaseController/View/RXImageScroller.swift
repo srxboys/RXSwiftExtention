@@ -39,7 +39,7 @@ class RXImageScroller: UIView {
         let pageControl = RXPageControl()
         let height = self.bounds.size.height
         let width = self.bounds.size.width
-        pageControl.frame = CGRect(x: 0, y:height-20 , width: width, height: 10)
+        pageControl.frame = CGRect(x: 0, y:height-15 , width: width, height: 10)
         pageControl.isUserInteractionEnabled = false
         return pageControl
     }()
@@ -107,7 +107,8 @@ extension RXImageScroller: UICollectionViewDelegateFlowLayout {
 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        RXLog("点击了 ")
+        let row = indexPath.item
+        RXLog("点击了 轮播图第\(row)张")
     }
 }
 
@@ -140,8 +141,6 @@ extension RXImageScroller {
 fileprivate class ImageScrollerCell: UICollectionViewCell {
     fileprivate lazy var imgView : UIImageView = { [unowned self] in
         let imgView = UIImageView(frame: self.bounds)
-//        imgView.image = UIImage(named: "")
-        imgView.backgroundColor = UIColor.randomColor()
         return imgView
     }()
     

@@ -4,6 +4,7 @@
 [![Language](https://img.shields.io/badge/Language-Swift-yellow.svg)](http://swift-lang.org/main/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://mit-license.org)
 
+- Swift 3.1
 - 基于 \>=Xcode8
 
 

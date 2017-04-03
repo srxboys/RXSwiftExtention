@@ -12,27 +12,26 @@ let HomeSpaceCellId = "HSCI"
 
 class RXHomeViewController: RXBaseViewController {
     
-    fileprivate let ImgScrollHeight = RXActureHeight(120)
+    fileprivate let ImgScrollHeight = RXActureHeight(150)
     fileprivate lazy var imageScrollVM = RXHomeImageScrollViewModel()
     fileprivate lazy var homeLoadRequestVM =  RXHomeloadRequest()
     
     //初始化时赋值
-    fileprivate lazy var collectionView : UICollectionView = {[unowned self]  in
+    fileprivate lazy var collectionView : UICollectionView = {[weak self]  in
         let flowlayout = UICollectionViewFlowLayout()
         flowlayout.minimumLineSpacing = 0
         flowlayout.minimumInteritemSpacing = 0
         
-        let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowlayout)
+        let collectionView = UICollectionView(frame: self?.view.bounds ?? CGRect(), collectionViewLayout: flowlayout)
         collectionView.delegate =  self
         collectionView.dataSource = self
-        collectionView.backgroundColor = self.view.backgroundColor
-        collectionView.contentInset = UIEdgeInsetsMake(self.ImgScrollHeight, 0, 0, 0)
+        collectionView.backgroundColor = self?.view.backgroundColor ?? UIColor.white
+        collectionView.contentInset = UIEdgeInsetsMake(self?.ImgScrollHeight ?? 0, 0, 0, 0)
         return collectionView;
     }()
     
-    fileprivate lazy var imageScrollView : RXImageScroller = { [unowned self] in
-        let imageScrollView = RXImageScroller(frame:CGRect(x: 0, y: -self.ImgScrollHeight, width: RXScreenWidth, height: self.ImgScrollHeight))
-        imageScrollView.backgroundColor = UIColor.gray
+    fileprivate lazy var imageScrollView : RXImageScroller = { [weak self] in
+        let imageScrollView = RXImageScroller(frame:CGRect(x: 0, y: -(self?.ImgScrollHeight ?? 0), width: RXScreenWidth, height: self?.ImgScrollHeight ?? 0))
         return imageScrollView
     }()
     
@@ -73,22 +72,39 @@ extension RXHomeViewController {
 extension RXHomeViewController : UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if(section == 0) {
+            // gi 上 图
             return 0
         }
         else if(section == 1) {
-            if (homeLoadRequestVM.homeIconCheckImgDicM.count>4) {
-                return 4
-            }
-            else {
-                return 0
-            }
+            //显示4个icon
+            return 4
+//            不注释掉，cell会跳动
+//            if (homeLoadRequestVM.homeIconCheckImgDicM.count>4) {
+//                return 4 //4个横向显示
+//            }
+//            else {
+//                
+//            }
         }
-        else if(section == 1) {
+        else if(section == 2) {
+            //gif 下 图
+            return 0
+        }
+        else if(section == 3) {
+            //灰条
+            return 1
+        }
+        else if(section == 4) {
+            //秒杀、买手、玩家
+            return 1
+        }
+        else if(section == 5) {
+            //秒杀、买手、玩家
             return 1
         }
         else {
@@ -101,15 +117,14 @@ extension RXHomeViewController : UICollectionViewDataSource {
         let row = indexPath.item
         
         if(section == 0) {
-//            横条gif广告
+//            横条gif广告 上
             let cell : RXHomeGifAdCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeGifAdCellId, for: indexPath) as! RXHomeGifAdCell
-            cell.contentView.backgroundColor = UIColor.randomColor()
             return cell
         }
         else if(section == 1) {
             //4个图标
             let cell : RXHomeMarketingCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMarketingCellId, for: indexPath) as! RXHomeMarketingCell
-        
+            cell.delegate = self
             let key = cell.getCellModelKey(row)
             let dict = homeLoadRequestVM.homeIconCheckImgDicM
             let valueObject = dictForKey(dict, key: key)
@@ -117,17 +132,26 @@ extension RXHomeViewController : UICollectionViewDataSource {
             if(valueObject.isValue) {
                 value = valueObject.object as! RXHomeIconModel
             }
-            cell.setData(value)
-//            cell.contentView.backgroundColor = UIColor.randomColor()
+            cell.setData(value, row: row)
             return cell
         }
-        else if(section == 1) {
+        else if(section == 2) {
+//            横条gif广告 下
             let cell : RXHomeGifAdCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeGifAdCellId, for: indexPath) as! RXHomeGifAdCell
-            cell.contentView.backgroundColor = UIColor.randomColor()
+            return cell
+        }
+        else if(section == 4) {
+            let cell : RXHomeBuyerPlayerCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeBuyerPlayerCellId, for: indexPath) as! RXHomeBuyerPlayerCell
+            cell.delegate = self
+            cell.setBuyerPlayerModel(bpArr: homeLoadRequestVM.homeBuyerPlayerArrM)
+            cell.setSkillModel(model: homeLoadRequestVM.homeSkillModel)
             return cell
         }
         
+        //灰条
         let spaceCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeSpaceCellId, for: indexPath)
+        spaceCell.contentView.backgroundColor = UIColor.lightGray
+        spaceCell.contentView.isUserInteractionEnabled = false
         return spaceCell
     }
     
@@ -141,17 +165,35 @@ extension RXHomeViewController : UICollectionViewDelegateFlowLayout {
         //横条gif广告
         }
         else if(section == 1) {
+            // 显示四个icon
             return CGSize(width: RXScreenWidth/4, height: RXScreenWidth/4-5-8)
        }
         else if(section == 2) {
            //横条gif广告
             return CGSize()
         }
+        else if(section == 3) {
+            //灰条
+            return CGSize(width: RXScreenWidth, height: 10)
+        }
+        else if (section == 4) {
+            //秒杀、买手、玩家
+            return CGSize(width: RXScreenWidth, height: RXActureHeight(148))
+        }
+        else if(section == 5) {
+            //灰条
+            return CGSize(width: RXScreenWidth, height: 10)
+        }
         return CGSize()
     }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let section = indexPath.section
+        if(section == 1 || section == 3 || section == 3 || section == 5) {
+            //不可点击
+            return
+        }
         RXLog("您 选择了 第几个item \(indexPath.item)")
     }
 
@@ -171,13 +213,28 @@ extension RXHomeViewController {
     
         homeLoadRequestVM.homeRequetBuyerPlayer { 
             //买手、玩家、秒杀
+            self.collectionView.reloadSections(IndexSet(integer: 4))
+        }
+    
+        homeLoadRequestVM.homeRequetSkill {
+            self.collectionView.reloadSections(IndexSet(integer: 4))
         }
 
     }
 }
 
 // MARK: --- 处理事件 -----
-extension RXHomeViewController {
-   
+extension RXHomeViewController : RXHomeBuyerPlayerCellDelegate, RXHomeMarketingCellDelegate {
+    func homeMarketionCellClick(_ rowKey: String, row:Int) {
+        RXLog("点击icon key=\(rowKey)  \(row)")
+    }
+    
+    func homeBuyerPlayerTimeOut() {
+        RXLog("秒杀的倒计时为0了哦")
+    }
+    
+    func homeBuyerPlayerClick(_ type: CellType, _ skill_id: String) {
+        RXLog("点击了 秒杀、买手、玩家 \(type)")
+    }
 }
 

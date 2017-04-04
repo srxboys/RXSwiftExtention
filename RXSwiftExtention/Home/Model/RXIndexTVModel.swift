@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RXIndexTV: RXModel {
+class RXIndexTVModel: RXModel {
     var tvID : String = ""
     var sku : String = ""
     var name : String = ""

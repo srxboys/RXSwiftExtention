@@ -9,5 +9,8 @@
 import UIKit
 
 class RXShopCartViewController: RXBaseViewController {
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+    }
 }

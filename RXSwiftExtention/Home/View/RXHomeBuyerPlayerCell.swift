@@ -5,6 +5,7 @@
 //  Created by srx on 2017/4/2.
 //  Copyright © 2017年 https://github.com/srxboys. All rights reserved.
 //
+//秒杀、买手、玩家_banner
 
 import UIKit
 import Kingfisher
@@ -15,6 +16,12 @@ enum CellType : Int {
     case CellType_Skil = 0
     case CellType_Buyer = 1
     case CellType_Player = 2
+}
+
+enum CellSkilTimeType : Int {
+    case CellSkilTime_noStart = 0
+    case CellSkilTime_expire = 1
+    case CellSkilTime_doing = 2
 }
 
 protocol RXHomeBuyerPlayerCellDelegate : class {
@@ -120,8 +127,17 @@ extension RXHomeBuyerPlayerCell {
 // MARK: --- <#Nodes#> -----
 // MARK: --- <#Nodes#> -----
 // MARK: --- 秒杀view -----
+
+protocol CellSkillViewDelegate {
+    func cellSkillViewTimeOut(_ type:CellSkilTimeType)
+}
+
 class CellSkillView: UIView {
-    fileprivate var timer: Timer = Timer()
+    var delegate : CellSkillViewDelegate?
+    
+    fileprivate lazy var timer: Timer? = Timer()
+    fileprivate lazy var timeSingeDateInt : Int = 0
+    fileprivate lazy var timeType = CellSkilTimeType.CellSkilTime_noStart
     /// 商品图
     fileprivate lazy var imgView : UIImageView = {[weak self] in
         let imgView = UIImageView(frame: self?.bounds ?? CGRect())
@@ -182,7 +198,6 @@ class CellSkillView: UIView {
         return tagImg
     }()
     
-    
     fileprivate var skillModel : RXSkillModel = RXSkillModel() {
         didSet {
             reloadSkillView()
@@ -191,7 +206,6 @@ class CellSkillView: UIView {
 }
 
 extension CellSkillView {
-    
     /// 添加控件
     func addSubviewUI() {
         backgroundColor = UIColor.white
@@ -205,7 +219,6 @@ extension CellSkillView {
         addSubview(secondLabel)
     }
    
-
     /// 更改子控件坐标
     func changeSubViewFrame(viewFrame:CGRect) {
         let width = viewFrame.size.width
@@ -252,7 +265,6 @@ extension CellSkillView {
         
     }
     
-    
     /// 统一初始化UILabel
     fileprivate func setLabel(_ title:String, fontSize:CGFloat, color:UIColor) -> UILabel {
         let label = UILabel()
@@ -269,31 +281,88 @@ extension CellSkillView {
         
         let url = URL(string: skillModel.image)
         imgView.kf.setImage(with: url)
+        
+        timeWithString(skillModel.now, startTimer: skillModel.startTime, endTimer: skillModel.endTime)
     
     }
     
-    fileprivate func timeWithString(_ currentTimer:String, startTimer:String, endTimer:String) -> (hour:String, min:String, second:String) {
+    fileprivate func timeWithString(_ currentTimer:String, startTimer:String, endTimer:String) {
         let currentTime = timeStampToDate(currentTimer)
         let startTime = timeStampToDate(startTimer)
         let endTime = timeStampToDate(endTimer)
         
-        return ("", "" ,"")
+        if(endTime.compare(currentTime) == ComparisonResult.orderedAscending) {
+            //时间已过期
+            timeType = .CellSkilTime_expire
+            timeTimeOut(timeType)
+        }
+        else if(startTime.compare(currentTime) == .orderedDescending) {
+            //未开始
+            
+            timeType = .CellSkilTime_noStart
+            timeTimeOut(timeType)
+        }
+        else {
+            //开始倒计时
+            timeType = .CellSkilTime_doing
+            timeSingeDateInt = Int(endTime.timeIntervalSince1970 - currentTime.timeIntervalSince1970)
+            let object = timeStampToString(timeSingeDateInt)
+            hourLabel.text = object.hour
+            minLabel.text = object.mintes
+            secondLabel.text = object.seconds
+            let interval : Double = 1
+            timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(startCountDown), userInfo: nil, repeats: true)
+
+            let runLoopTime = RunLoop.main
+            runLoopTime.add(timer!, forMode: .commonModes)
+//            runLoopTime.run() //这个是针对RunLoop()方法的，不是main 的RunLoop
+            timer?.fireDate = .distantPast
+
+        }
     }
     
-    fileprivate func timeStampToDate(_ time:String) -> NSDate {
+    fileprivate func timeStampToDate(_ time:String) -> Date {
         let string = NSString(string: time)
         let timeSta:TimeInterval = string.doubleValue
         let dfmatter = DateFormatter()
         dfmatter.dateFormat="HH:mm:ss"
         dfmatter.date(from: time)
-        return NSDate(timeIntervalSince1970: timeSta)
+        return Date(timeIntervalSince1970: timeSta)
     }
     
-    fileprivate func timeStampToString(_ time:Int) -> String {
+    fileprivate func timeStampToString(_ time:Int) -> (hour:String, mintes:String, seconds:String) {
         let hours : Int = time/3600
         let mintes : Int = time%3600/60
         let seconds : Int = time%60
-        return String(format: "%02ld:%02ld:%02ld", hours, mintes, seconds)
+        let timeString = String(format: "%02ld:%02ld:%02ld", hours, mintes, seconds)
+        let array = timeString.components(separatedBy: ":")
+        return (array[0], array[1], array[2])
+    }
+    
+    @objc fileprivate func startCountDown() {
+        timeSingeDateInt -= 1
+        
+        if(timeSingeDateInt <= 0) {
+            timeTimeOut(.CellSkilTime_expire)
+            return
+        }
+        let object = timeStampToString(timeSingeDateInt)
+        hourLabel.text = object.hour
+        minLabel.text = object.mintes
+        secondLabel.text = object.seconds
+    }
+    
+    fileprivate func timeTimeOut(_ type : CellSkilTimeType) {
+        if(timer != nil) {
+            //防止崩溃
+            timer?.invalidate()
+            timer = nil
+        }
+
+        hourLabel.text = "00"
+        minLabel.text = "00"
+        secondLabel.text = "00"
+        delegate?.cellSkillViewTimeOut(type)
     }
 }
 
@@ -312,6 +381,7 @@ class TriangleView : UIView {
         }
     }
 }
+
 
 
 

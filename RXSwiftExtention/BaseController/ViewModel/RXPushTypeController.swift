@@ -10,8 +10,8 @@ import UIKit
 
 //通用跳转方法
 
-/*
-public func RXPushVC(currentVC:RXBaseViewController, model:RXFocusModel, sku : NSString?, fromURI:String?) {
-    
-}
- */
+
+//public func RXPushVC(currentVC:RXHomeViewControllerr, model:RXImageScrollModel, sku : NSString?, fromURI:String?) {
+//    
+//}
+

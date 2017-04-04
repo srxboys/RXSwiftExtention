@@ -8,7 +8,7 @@
 
 import UIKit
 
-let HomeSpaceCellId = "HSCI"
+fileprivate let HomeSpaceCellId = "HSCI"
 
 class RXHomeViewController: RXBaseViewController {
     
@@ -63,8 +63,10 @@ extension RXHomeViewController {
         collectionView.register(RXHomeGifAdCell.classForCoder(), forCellWithReuseIdentifier: HomeGifAdCellId)
         //icon cell
         collectionView.register(RXHomeMarketingCell.classForCoder(), forCellWithReuseIdentifier: HomeMarketingCellId)
-        //icon 秒杀、买手、玩家
+        // 秒杀、买手、玩家
         collectionView.register(RXHomeBuyerPlayerCell.classForCoder(), forCellWithReuseIdentifier: HomeBuyerPlayerCellId)
+        // TV抢购
+        collectionView.register(RXHomeIndexTVCell.classForCoder(), forCellWithReuseIdentifier: HomeIndexTVCellId)
     }
 }
 
@@ -72,7 +74,7 @@ extension RXHomeViewController {
 extension RXHomeViewController : UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 6
+        return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -104,8 +106,12 @@ extension RXHomeViewController : UICollectionViewDataSource {
             return 1
         }
         else if(section == 5) {
-            //秒杀、买手、玩家
+            //灰条
             return 1
+        }
+        else if(section == 6) {
+            //TV抢购
+            return 10
         }
         else {
             return 0
@@ -141,10 +147,16 @@ extension RXHomeViewController : UICollectionViewDataSource {
             return cell
         }
         else if(section == 4) {
+            //秒杀、买手、玩家
             let cell : RXHomeBuyerPlayerCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeBuyerPlayerCellId, for: indexPath) as! RXHomeBuyerPlayerCell
             cell.delegate = self
             cell.setBuyerPlayerModel(bpArr: homeLoadRequestVM.homeBuyerPlayerArrM)
             cell.setSkillModel(model: homeLoadRequestVM.homeSkillModel)
+            return cell
+        }
+        else if(section == 6) {
+            let cell : RXHomeIndexTVCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeIndexTVCellId, for: indexPath) as! RXHomeIndexTVCell
+            cell.contentView.backgroundColor = UIColor.colorRandom()
             return cell
         }
         
@@ -184,6 +196,10 @@ extension RXHomeViewController : UICollectionViewDelegateFlowLayout {
             //灰条
             return CGSize(width: RXScreenWidth, height: 10)
         }
+        else if(section == 6) {
+            //灰条
+            return CGSize(width: RXScreenWidth, height: 100)
+        }
         return CGSize()
     }
     
@@ -195,6 +211,7 @@ extension RXHomeViewController : UICollectionViewDelegateFlowLayout {
             return
         }
         RXLog("您 选择了 第几个item \(indexPath.item)")
+
     }
 
 }
@@ -235,6 +252,8 @@ extension RXHomeViewController : RXHomeBuyerPlayerCellDelegate, RXHomeMarketingC
     
     func homeBuyerPlayerClick(_ type: CellType, _ skill_id: String) {
         RXLog("点击了 秒杀、买手、玩家 \(type)")
+        let sharkPlayerVC = RXSharkPlayerController()
+        navigationController?.pushViewController(sharkPlayerVC, animated: true)
     }
 }
 

@@ -5,7 +5,7 @@
 //  Created by srx on 2017/4/2.
 //  Copyright © 2017年 https://github.com/srxboys. All rights reserved.
 //
-//首页gif 横幅
+//首页gif 横幅_banner
 import UIKit
 import Kingfisher
 

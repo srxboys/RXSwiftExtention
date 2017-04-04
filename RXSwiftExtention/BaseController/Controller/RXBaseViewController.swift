@@ -23,7 +23,7 @@ class RXBaseViewController: UIViewController {
     
     deinit {
         //OC的 dealloc
-        RXLog("loc")
+        RXLog("\(self.classForCoder) deinit控制器销毁")
     }
 }
 

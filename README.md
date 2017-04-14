@@ -18,9 +18,10 @@
 
 ### 刚刚开始 <br>
 <br>
-> 不知怎么，没有过滤文件，还是提交不了RXSwiftExtention.xcworkspace到github上，只能 ->
-- 1、终端 : pod install
-- 2、解压: RXSwiftExtention.xcworkspace.zip 解压，也可以
+
+` 不知怎么，没有用过滤文件，还是提交不了RXSwiftExtention.xcworkspace到github上，目前只能用下面2个方法 `
+> 1、终端 : pod install <br>
+> 2、解压: RXSwiftExtention.xcworkspace.zip 解压，也可以
 
 <br>
 

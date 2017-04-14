@@ -11,7 +11,7 @@ import UIKit
 //通用跳转方法
 
 
-//public func RXPushVC(currentVC:RXHomeViewControllerr, model:RXImageScrollModel, sku : NSString?, fromURI:String?) {
-//    
-//}
+public func RXPushVC(currentVC:AnyClass, model:AnyObject, sku : NSString?, fromURI:String?) {
+    
+}
 

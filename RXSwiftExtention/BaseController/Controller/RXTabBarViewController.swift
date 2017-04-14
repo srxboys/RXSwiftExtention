@@ -36,6 +36,10 @@ class RXTabBarViewController: UITabBarController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    
 }
 
 // MARK: - 初始化控件

@@ -8,15 +8,22 @@
 
 import UIKit
 
-fileprivate let SharkPlayerCellId = "SPCI"
+fileprivate let SharkPlayerGrayCellId = "SPGCI"
 
 class RXSharkPlayerController: RXBaseViewController {
+    
+    fileprivate let ImageSH = RXActureHeight(180)
 
+    fileprivate lazy var imageScrollView : RXImageScroller = {[weak self] in
+        let imageScrollView = RXImageScroller(frame: CGRect(x: 0, y: 0, width: RXScreenWidth, height: self?.ImageSH ?? 0))
+        return imageScrollView
+    }()
     
     fileprivate lazy var flowLayout = UICollectionViewFlowLayout()
     
-    fileprivate lazy var collection : UICollectionView = {[weak self] in
-        let collection = UICollectionView(frame: CGRect(), collectionViewLayout: (self?.flowLayout)!)
+    fileprivate lazy var collectionView : UICollectionView = {[weak self] in
+        let collection = UICollectionView(frame: CGRect(x: 0, y: RXNavHeight, width: RXScreenWidth, height: RXScreenHeight-RXNavHeight), collectionViewLayout: (self?.flowLayout)!)
+        collection.backgroundColor = UIColor.white
         collection.delegate = self
         collection.dataSource = self
         return collection
@@ -39,10 +46,13 @@ class RXSharkPlayerController: RXBaseViewController {
 // MARK: --- ADD UI -----
 extension RXSharkPlayerController {
     fileprivate func viewAddView() {
-        view.addSubview(collection)
+        view.addSubview(collectionView)
+        collecionViewAddView()
     }
     
     fileprivate func collecionViewAddView() {
+        regisetCell()
+        collectionView.addSubview(imageScrollView)
         
     }
 }
@@ -50,7 +60,7 @@ extension RXSharkPlayerController {
 // MARK: --- 注册cell -----
 extension RXSharkPlayerController {
     fileprivate func regisetCell() {
-        collection.register(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: SharkPlayerCellId)
+        collectionView.register(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: SharkPlayerGrayCellId)
     }
 }
 
@@ -61,12 +71,12 @@ extension RXSharkPlayerController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 100
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //灰条
-        let spaceCell = collectionView.dequeueReusableCell(withReuseIdentifier: SharkPlayerCellId, for: indexPath)
+        let spaceCell = collectionView.dequeueReusableCell(withReuseIdentifier: SharkPlayerGrayCellId, for: indexPath)
         spaceCell.contentView.backgroundColor = UIColor.lightGray
         spaceCell.contentView.isUserInteractionEnabled = false
         return spaceCell

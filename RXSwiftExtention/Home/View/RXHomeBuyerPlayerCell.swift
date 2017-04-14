@@ -291,16 +291,16 @@ extension CellSkillView {
         let startTime = timeStampToDate(startTimer)
         let endTime = timeStampToDate(endTimer)
         
+        timeTimeOut(timeType)
+        
         if(endTime.compare(currentTime) == ComparisonResult.orderedAscending) {
             //时间已过期
             timeType = .CellSkilTime_expire
-            timeTimeOut(timeType)
+            
         }
         else if(startTime.compare(currentTime) == .orderedDescending) {
             //未开始
-            
             timeType = .CellSkilTime_noStart
-            timeTimeOut(timeType)
         }
         else {
             //开始倒计时

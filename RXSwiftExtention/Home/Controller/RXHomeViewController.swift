@@ -111,7 +111,7 @@ extension RXHomeViewController : UICollectionViewDataSource {
         }
         else if(section == 6) {
             //TV抢购
-            return 10
+            return 1
         }
         else {
             return 0
@@ -155,8 +155,9 @@ extension RXHomeViewController : UICollectionViewDataSource {
             return cell
         }
         else if(section == 6) {
+            // TV抢购
             let cell : RXHomeIndexTVCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeIndexTVCellId, for: indexPath) as! RXHomeIndexTVCell
-            cell.contentView.backgroundColor = UIColor.colorRandom()
+            
             return cell
         }
         
@@ -237,6 +238,10 @@ extension RXHomeViewController {
             self.collectionView.reloadSections(IndexSet(integer: 4))
         }
 
+        homeLoadRequestVM.homeRequetIndexTV {
+            self.collectionView.reloadSections(IndexSet(integer: 6))
+        }
+
     }
 }
 
@@ -255,5 +260,6 @@ extension RXHomeViewController : RXHomeBuyerPlayerCellDelegate, RXHomeMarketingC
         let sharkPlayerVC = RXSharkPlayerController()
         navigationController?.pushViewController(sharkPlayerVC, animated: true)
     }
+    
 }
 

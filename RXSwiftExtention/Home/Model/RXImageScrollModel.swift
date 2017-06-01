@@ -30,7 +30,7 @@ class RXImageScrollModel: RXModel {
     
     convenience init(dict:[String:Any]) {
         self.init()
-        //接口字段为什么要一个一个的取，因为类型总是换，特别是后台跟换人
+        //接口字段为什么要一个一个的取，因为类型总是换，特别是后台更换人
         title = dictForKeyString(dict, key: "title")
         type = dictForKeyInt(dict, key: "type")
         image = dictForKeyString(dict, key: "image")

@@ -5,6 +5,7 @@
 //  Created by srx on 2017/3/31.
 //  Copyright © 2017年 https://github.com/srxboys. All rights reserved.
 //
+//所有请求数据都在这里
 
 import UIKit
 
@@ -158,6 +159,7 @@ class RXHomeloadRequest: NSObject {
     }
     
     //MARK: - TV抢购
+    var homeIndexTVArrM = [Any]()
     func homeRequetIndexTV(_ finishCallBack : @escaping ()->()) {
         var paramts = [String:Any]()
         for key in PARAMSCOMMON.keys {
@@ -165,19 +167,33 @@ class RXHomeloadRequest: NSObject {
         }
         paramts["method"] = HOME_INDEXTV_PATH
         paramts["sign"] = "98AE5C5F271A49BBD7FA2503BA6958FC"
-        
+
         RXNetworkTools.postData(parameters: paramts) { (result:Any, status:Bool, message:String) in
             if(status == false)  {
                 RXLog(message)
                 //show toash
                 return
             }
-            var arr = [Any]()
-            if result is Array<Any>  {
-                arr = result as! [Any]
+            var homeTVDict = [String:Any]()
+            if result is [String:Any]  {
+                homeTVDict = result as! [String:Any]
+            }
+            //需要定位信息 //我先写beijing吧
+            let homeTVArrayObjc = dictForKey(homeTVDict, key: "beijing");
+            if(!homeTVArrayObjc.isValue) {
+                finishCallBack()
+                return
+            }
+            let homeTVArray : [Any] = homeTVArrayObjc.object is [Any] ? homeTVArrayObjc.object as! [Any] : [Any]()
+            for dict in homeTVArray {
+                guard dict is [String : Any] else {
+                    continue
+                }
+                let indexTVModel = RXIndexTVModel(dict: dict as! [String : Any])
+                self.homeIndexTVArrM.append(indexTVModel)
             }
             
-            
+            finishCallBack()
         }
     }
 }

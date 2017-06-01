@@ -8,6 +8,7 @@
 
 import Foundation
 
+//为了保密 线上app 机密方式，这里是写死的通用字段
 public let PARAMSCOMMON = ["hardware":"iPhone8,1",
                            "member_id":"54189",
                            "umeng_channel":"真机测试",

@@ -72,8 +72,33 @@ public func RXActureHeightV(_ height:CGFloat) -> CGFloat {
     return height/667.0 * RXScreenHeight
 }
 
+public var iPhone4 : Bool {
+    get {
+       return sizeEqual(size: CGSize(width: 320, height: 480))
+    }
+}
 
+public var iPhone5 : Bool {
+    get {
+        return sizeEqual(size: CGSize(width: 320, height: 568))
+    }
+}
 
+public var iPhone6 : Bool {
+    get {
+        return sizeEqual(size: CGSize(width: 375, height: 667))
+    }
+}
+
+public var iPhone6Plus : Bool {
+    get {
+        return sizeEqual(size: CGSize(width: 414, height: 736))
+    }
+}
+
+fileprivate func sizeEqual(size : CGSize) -> Bool {
+    return  __CGSizeEqualToSize(CGSize(width: RXScreenWidth, height: RXScreenHeight),size)
+}
 
 //这个还是不行
 //public let SELF_CLASS_NAME = (#file as String).components(separatedBy: "/").last?.replacingOccurrences(of: ".swift", with: "")

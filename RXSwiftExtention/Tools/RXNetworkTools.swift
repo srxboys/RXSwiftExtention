@@ -24,11 +24,6 @@ class RXNetworkTools {
         printHttp(parameters!)
         requestHttpData(.post, URLString: SERVER, parameters: parameters) { (result : Any) in
             
-            guard result != nil else {
-                finishedCallback("", false, "服务器错误")
-                return
-            }
-            
             // 1.将result转成字典类型
             guard let resultDict = result as? [String : NSObject] else {
                 finishedCallback("", false, "服务器错误")

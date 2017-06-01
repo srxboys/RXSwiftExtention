@@ -5,7 +5,7 @@
 //  Created by srx on 2017/3/30.
 //  Copyright © 2017年 https://github.com/srxboys. All rights reserved.
 //
-//轮播图  --因为现在还没有要设计网络，就没有数据模型和数据
+//轮播图 
 
 import UIKit
 import Kingfisher

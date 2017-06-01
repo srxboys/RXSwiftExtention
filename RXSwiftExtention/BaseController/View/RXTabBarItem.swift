@@ -83,8 +83,6 @@ extension RXTabBarItem {
         
         var labelFrame : CGRect = CGRect(x: 0, y: labelY, width: width, height: labelH)
         
-        
-        
         _nameLabel.textColor = UIColor.darkGray
         if(index == 4) {
             labelFrame = CGRect()

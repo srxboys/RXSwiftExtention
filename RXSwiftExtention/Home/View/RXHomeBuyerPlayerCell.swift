@@ -19,9 +19,9 @@ enum CellType : Int {
 }
 
 enum CellSkilTimeType : Int {
-    case CellSkilTime_noStart = 0
-    case CellSkilTime_expire = 1
-    case CellSkilTime_doing = 2
+    case CellSkilTime_noStart = 0 //未开始
+    case CellSkilTime_expire = 1 //已播出
+    case CellSkilTime_doing = 2 //开始倒计时
 }
 
 protocol RXHomeBuyerPlayerCellDelegate : class {
